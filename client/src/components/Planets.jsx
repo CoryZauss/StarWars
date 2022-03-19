@@ -27,8 +27,10 @@ const Planets = () => {
         <div>Loading...</div>
       )}
 
-      {PreviousPageUrl !== null && (
+      {PreviousPageUrl !== null && planetsList.length > 0 && (
         <button
+          type="button"
+          className="btn btn-warning"
           onClick={() => {
             getPlanets(PreviousPageUrl);
           }}
@@ -36,8 +38,10 @@ const Planets = () => {
           Previous
         </button>
       )}
-      {nextPageUrl !== null && (
+      {nextPageUrl !== null && planetsList.length > 0 && (
         <button
+          type="button"
+          className="btn btn-warning"
           onClick={() => {
             getPlanets(nextPageUrl);
           }}
