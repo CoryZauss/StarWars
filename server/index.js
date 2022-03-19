@@ -9,15 +9,13 @@ app.use(express.static('client/dist'));
 
 const serverCache = {};
 
-app.get('/api/people', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/api/planets/*', (req, res) => {
+//handle any endpoint for the swapi and cache the request
+app.get('/api/*', (req, res) => {
+  console.log(req.url)
   if (serverCache[req.url]) {
     res.send(serverCache[req.url])
   } else {
-    axios.get('https://swapi.dev/api/planets/')
+    axios.get(`https://swapi.dev/${req.url}`)
       .then(response => {
         console.log(req.url)
         res.send(response.data)
@@ -27,22 +25,11 @@ app.get('/api/planets/*', (req, res) => {
   }
 })
 
-app.get('/api/films', (req, res) => {
-  res.send('Hello World!')
-})
-app.get('/api/species', (req, res) => {
-  res.send('Hello World!')
-})
-app.get('/api/starships', (req, res) => {
-  res.send('Hello World!')
-})
-app.get('/api/vehicles', (req, res) => {
-  res.send('Hello World!')
-})
 
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
 })
+
 
 
 
