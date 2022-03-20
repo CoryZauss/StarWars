@@ -44,33 +44,27 @@ const PlanetView = ({ planet, goback, showpagebuttons }) => {
   return (
     <>
       <div className="container">
-        <div className="row">{planet.name}</div>
+        <div >{planet.name}</div>
         <div className="row">
-          <div className="col">
+          <div className="col border border-warning p-1">
             FEATURED IN FILMS..
             {featuredFilms.length > 0 &&
               featuredFilms.map((film) => {
                 return <div>{film.title}</div>;
               })}
           </div>
-          <div className="col">
-            PLANET INFORMATION
-            <span className="row">Population: {planet.population}</span>
-            <span className="row">Climate: {planet.climate}</span>
-            <span className="row">Gravity: {planet.gravity}</span>
-            <span className="row"> Diameter: {planet.diameter}</span>
-            <span className="row">
-              {" "}
-              Orbital Period: {planet.orbital_period}
-            </span>
-            <span className="row">
-              Rotation Period: {planet.rotation_period}
-            </span>
-            <span className="row">
-              Surface Water: {planet.surface_water}% Terrain: {planet.terrain}
-            </span>
-          </div>
-          <div className="col">
+          <div className="col border border-warning p-2">
+            <div>PLANET INFORMATION</div>
+            <div>Population: {planet.population}</div>
+            <div>Climate: {planet.climate}</div>
+            <div>Gravity: {planet.gravity}</div>
+            <div>Diameter: {planet.diameter}</div>
+            <div>Orbital Period: {planet.orbital_period}</div>
+            <div>Rotation Period: {planet.rotation_period}</div>
+            <div>Surface Water: {planet.surface_water}%</div>
+            <div>Terrain:{planet.terrain}</div>
+            </div>
+            <div className="col border border-warning p-1">
             RESIDENTS OF PLANET
             {residents.length > 0 &&
               residents.map((resident) => {

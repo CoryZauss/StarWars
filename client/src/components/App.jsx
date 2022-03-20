@@ -11,28 +11,31 @@ const App = () => {
 
   return (
     <>
-      {page === "home" &&
-        (showNav ? (
-          <div>
-            <span
+      <div className="vh-100 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
+        {page === "home" &&
+          (showNav ? (
+            <div>
+              <span
+                onClick={() => {
+                  setShowNav(false);
+                }}
+              >
+                nav
+              </span>
+              <Nav changepage={changePage} />
+            </div>
+          ) : (
+            <h1
+
               onClick={() => {
-                setShowNav(false);
+                setShowNav(true);
               }}
-          >
-            nav
-            </span>
-            <Nav changepage={changePage} />
-          </div>
-        ) : (
-          <div
-            onClick={() => {
-              setShowNav(true);
-            }}
-          >
-            Explore the StarWars universe
-          </div>
-        ))}
-      {page === "planets" && <Planets />}
+            >
+              Explore the StarWars universe
+            </h1>
+          ))}
+        {page === "planets" && <Planets />}
+      </div>
     </>
   );
 }

@@ -7,15 +7,26 @@ const PlanetsList = ({ planetslist, hidebuttons }) => {
 
   return (
     <>
-      {showList ? planetslist.map((planet) => {
-        return <div key={planet.name} onClick={() => {
-          setShowPlanet(planet);
-          setShowList(false);
-          hidebuttons(false);
-        } }>{planet.name}</div>
-      })
-        : (<PlanetView planet={showPlanet} goback={setShowList} showpagebuttons={hidebuttons}/>)}
+      <div className="container-fluid p-3 ">
 
+      {showList ? planetslist.map((planet) => {
+        return (
+          <div
+            className="text-center"
+            key={planet.name}
+            onClick={() => {
+              setShowPlanet(planet);
+              setShowList(false);
+              hidebuttons(false);
+            }}
+          >
+            {planet.name}
+          </div>
+        );
+      })
+      : (<PlanetView planet={showPlanet} goback={setShowList} showpagebuttons={hidebuttons}/>)}
+
+      </div>
     </>
   );
 };
