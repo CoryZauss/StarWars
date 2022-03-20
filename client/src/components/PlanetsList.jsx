@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import PlanetView from './PlanetView.jsx';
 
-const PlanetsList = ({planetslist}) => {
+const PlanetsList = ({ planetslist, hidebuttons }) => {
+  const [showPlanet, setShowPlanet] = useState({})
+  const [showList, setShowList] = useState(true)
+
   return (
     <>
-      {planetslist.map((planet) => {
-          return <div key={planet.name}>{planet.name}</div>;
-      })}
+      <div className="vw-25 p-3">
+        {showList && planetslist.map((planet) => {
+          return (
+            <div
+              className="text-center"
+              key={planet.name}
+              onClick={() => {
+                setShowPlanet(planet);
+                setShowList(false);
+                hidebuttons(false);
+              }}
+            >
+              {planet.name}
+            </div>
+          );
+        })}
+      </div>
+
+      {!showList && <PlanetView planet={showPlanet} goback={setShowList} showpagebuttons={hidebuttons}/>}
+
     </>
   );
 };
