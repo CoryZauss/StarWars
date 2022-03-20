@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PlanetsList from "./PlanetsList.jsx";
+import axios from 'axios';
 
 const Planets = () => {
   const [planetsList, setPlanetsList] = useState([]);
@@ -7,15 +8,20 @@ const Planets = () => {
   const [PreviousPageUrl, setPreviousPageUrl] = useState("");
 
   useEffect(() => {
-    getPlanets(`api/planets/`);
+    getPlanets(`api/`, "https://swapi.dev/api/planets/");
   }, []);
 
-  const getPlanets = async (url) => {
-    let response = await fetch(url);
-    let planets = await response.json();
-    setPlanetsList(planets.results);
-    setNextPageUrl(planets.next);
-    setPreviousPageUrl(planets.previous);
+  const getPlanets = async (url, swapi) => {
+    try {
+      let {data} = await axios.get(url, {
+        params: swapi,
+      });
+      setPlanetsList(data.results);
+      setNextPageUrl(data.next);
+      setPreviousPageUrl(data.previous);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   return (
@@ -32,7 +38,7 @@ const Planets = () => {
           type="button"
           className="btn btn-warning"
           onClick={() => {
-            getPlanets(PreviousPageUrl);
+            getPlanets('api/', PreviousPageUrl);
           }}
         >
           Previous
@@ -43,7 +49,7 @@ const Planets = () => {
           type="button"
           className="btn btn-warning"
           onClick={() => {
-            getPlanets(nextPageUrl);
+            getPlanets('api/', nextPageUrl);
           }}
         >
           Next

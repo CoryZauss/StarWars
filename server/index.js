@@ -10,16 +10,16 @@ app.use(express.static('client/dist'));
 const serverCache = {};
 
 //handle any endpoint for the swapi and cache the request
-app.get('/api/*', (req, res) => {
-  console.log(req.url)
-  if (serverCache[req.url]) {
-    res.send(serverCache[req.url])
+app.get('/api', (req, res) => {
+  let url = req.query['0'];
+  console.log(url)
+  if (serverCache[url]) {
+    res.send(serverCache[url])
   } else {
-    axios.get(`https://swapi.dev/${req.url}`)
+    axios.get(url)
       .then(response => {
-        console.log(req.url)
         res.send(response.data)
-        serverCache[req.url] = response.data
+        serverCache[url] = response.data
       })
       .catch(err => console.log(err))
   }
