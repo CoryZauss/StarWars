@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <>
-      <div className="vh-100 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
+      <div className="vh-100 h-100 fs-3 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
         {page === "home" &&
           (showNav ? (
             <div>
@@ -26,7 +26,6 @@ const App = () => {
             </div>
           ) : (
             <h1
-
               onClick={() => {
                 setShowNav(true);
               }}
@@ -34,7 +33,7 @@ const App = () => {
               Explore the StarWars universe
             </h1>
           ))}
-        {page === "planets" && <Planets />}
+        {page === "planets" && <Planets changepage={changePage} />}
       </div>
     </>
   );

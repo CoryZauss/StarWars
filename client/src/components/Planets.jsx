@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PlanetsList from "./PlanetsList.jsx";
 import axios from "axios";
 
-const Planets = () => {
+const Planets = ({changepage}) => {
   const [planetsList, setPlanetsList] = useState([]);
   const [nextPageUrl, setNextPageUrl] = useState("");
   const [PreviousPageUrl, setPreviousPageUrl] = useState("");
@@ -29,7 +29,7 @@ const Planets = () => {
     <>
       <div>PLANETS</div>
       {planetsList.length > 0 ? (
-        <PlanetsList planetslist={planetsList} hidebuttons={setShowButtons}/>
+        <PlanetsList planetslist={planetsList} hidebuttons={setShowButtons} />
       ) : (
         <div>Loading...</div>
       )}
@@ -37,7 +37,7 @@ const Planets = () => {
       {showButtons && PreviousPageUrl !== null && planetsList.length > 0 && (
         <button
           type="button"
-          className="btn btn-warning"
+          className="btn btn-warning m-2"
           onClick={() => {
             getPlanets("api/", PreviousPageUrl);
           }}
@@ -48,7 +48,7 @@ const Planets = () => {
       {showButtons && nextPageUrl !== null && planetsList.length > 0 && (
         <button
           type="button"
-          className="btn btn-warning"
+          className="btn btn-warning m-2"
           onClick={() => {
             getPlanets("api/", nextPageUrl);
           }}
@@ -56,6 +56,16 @@ const Planets = () => {
           Next
         </button>
       )}
+      <br></br>
+      <button
+        type="button"
+        className="btn btn-warning m-2"
+        onClick={() => {
+          changepage("home");
+        }}
+      >
+        Return to Nav
+      </button>
     </>
   );
 };
