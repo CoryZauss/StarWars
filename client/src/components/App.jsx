@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Planets from './Planets.jsx'
 import Nav from './Nav.jsx'
+import Page from './Page.jsx'
 
 const App = () => {
   const [showNav, setShowNav] = useState(false);
@@ -33,7 +33,7 @@ const App = () => {
               Explore the StarWars universe
             </h1>
           ))}
-        {page === "planets" && <Planets changepage={changePage} />}
+        {page !== "home" && <Page changepage={changePage} page={page}/>}
       </div>
     </>
   );
