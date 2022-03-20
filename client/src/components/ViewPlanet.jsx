@@ -1,50 +1,28 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
-const PlanetView = ({ planet, goback, showpagebuttons }) => {
+const ViewPlanet = ({ planet, goback, showpagebuttons, getallitems }) => {
   const [featuredFilms, setFeaturedFilms] = useState([]);
   const [residents, setResidents] = useState([]);
+  const [filmsExist, setFilmsExist] = useState(false);
+  const [residentsExist, setResidentsExist] = useState(false);
 
-  useEffect(() => {
-    getFilmsOrPeople(planet.films, "films");
+  useEffect(async () => {
+    await getallitems(planet.films).then((list) => {
+      console.log(list);
+      setFeaturedFilms(list);
+    });
   }, []);
 
-  useEffect(() => {
-    getFilmsOrPeople(planet.residents, "people");
+  useEffect(async () => {
+    await getallitems(planet.residents).then((list) => {
+      setResidents(list);
+    });
   }, []);
-
-  const getSingleItem = async (url, swapi) => {
-    try {
-      let { data } = await axios.get(url, {
-        params: swapi,
-      });
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getFilmsOrPeople = async (swapiArray, string) => {
-    try {
-      let items = [];
-      swapiArray.map((swapi) => {
-        items.push(getSingleItem("api/", swapi));
-      });
-      let results = await Promise.all(items);
-      if (string === "films") {
-        setFeaturedFilms(results);
-      } else {
-        setResidents(results);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <>
       <div className="container">
-        <div >{planet.name}</div>
+        <div>{planet.name}</div>
         <div className="row">
           <div className="col border border-warning p-1 m-2">
             FEATURED IN FILMS..
@@ -63,9 +41,9 @@ const PlanetView = ({ planet, goback, showpagebuttons }) => {
             <div>Rotation Period: {planet.rotation_period}</div>
             <div>Surface Water: {planet.surface_water}%</div>
             <div>Terrain:{planet.terrain}</div>
-            </div>
-            <div className="col border border-warning p-1 m-2">
-            RESIDENTS OF PLANET
+          </div>
+          <div className="col border border-warning p-1 m-2">
+            RESIDENTS
             {residents.length > 0 &&
               residents.map((resident) => {
                 return <div key={resident.name}>{resident.name}</div>;
@@ -87,4 +65,4 @@ const PlanetView = ({ planet, goback, showpagebuttons }) => {
   );
 };
 
-export default PlanetView;
+export default ViewPlanet;
