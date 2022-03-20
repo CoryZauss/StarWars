@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PlanetView from './PlanetView.jsx';
 
-const PlanetsList = ({ planetslist }) => {
+const PlanetsList = ({ planetslist, hidebuttons }) => {
   const [showPlanet, setShowPlanet] = useState({})
   const [showList, setShowList] = useState(true)
 
@@ -11,9 +11,10 @@ const PlanetsList = ({ planetslist }) => {
         return <div key={planet.name} onClick={() => {
           setShowPlanet(planet);
           setShowList(false);
+          hidebuttons(false);
         } }>{planet.name}</div>
       })
-        : (<PlanetView planet={showPlanet}/>)}
+        : (<PlanetView planet={showPlanet} goback={setShowList} showpagebuttons={hidebuttons}/>)}
 
     </>
   );

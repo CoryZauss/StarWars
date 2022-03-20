@@ -9,7 +9,7 @@ app.use(express.static("client/dist"));
 
 const serverCache = {};
 
-//handle any endpoint for the swapi and cache the request
+//handle any endpoint for the swapi and cache the requests data
 app.get("/api", (req, res) => {
   let url = req.query["0"];
   console.log(url);
