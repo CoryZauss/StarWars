@@ -62,6 +62,7 @@ const PageDataList = ({ datalist, hidebuttons, page }) => {
           goback={setShowList}
           showpagebuttons={hidebuttons}
           getallitems={getAllItems}
+          getsingleitem={getSingleItem}
         />
       )}
 
