@@ -50,7 +50,7 @@ const Page = ({changepage, page}) => {
     <>
       <div>{page}</div>
       {dataList.length > 0 ? (
-        <PageDataList datalist={dataList} hidebuttons={setShowButtons} />
+        <PageDataList page={page} datalist={dataList} hidebuttons={setShowButtons} />
       ) : (
         <div>Loading...</div>
       )}

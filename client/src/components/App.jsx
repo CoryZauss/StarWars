@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <>
-      <div className="vh-100 h-100 fs-3 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
+      <div className="vh-100 h-100 fs-4 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
         {page === "home" &&
           (showNav ? (
             <div>
