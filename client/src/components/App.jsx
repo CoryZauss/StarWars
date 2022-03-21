@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <>
-      <div className="vh-100 h-100 fs-4 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
+      <div className="h-100 fs-4 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
         {page === "home" &&
           (showNav ? (
             <div>
@@ -33,7 +33,7 @@ const App = () => {
               Explore the StarWars universe
             </h1>
           ))}
-        {page !== "home" && <Page changepage={changePage} page={page}/>}
+        {page !== "home" && <Page changepage={changePage} page={page} />}
       </div>
     </>
   );
