@@ -4,7 +4,7 @@
   "description": "React app to interface with the swapi",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest --env=jsdom --config ./client/src/tests/setupTests.js",
     "build": "webpack --watch",
     "start": "nodemon server/index.js",
     "build-pro": "webpack --mode production"
@@ -31,13 +31,18 @@
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.7.1",
+    "enzyme": "^3.11.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "react-test-renderer": "^17.0.2",
     "style-loader": "^3.3.1",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
   }
 }
+

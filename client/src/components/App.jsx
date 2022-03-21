@@ -11,27 +11,26 @@ const App = () => {
 
   return (
     <>
-      <div className="h-100 fs-4 container-fluid p-3 text-center text-warning bg-dark justify-content-center align-items-center">
+      <div className="vh-100 fs-4 container-fluid p-3 text-center text-warning bg-dark">
         {page === "home" &&
           (showNav ? (
             <div>
-              <span
-                onClick={() => {
-                  setShowNav(false);
-                }}
-              >
-                nav
-              </span>
               <Nav changepage={changePage} />
             </div>
           ) : (
-            <h1
-              onClick={() => {
-                setShowNav(true);
-              }}
-            >
-              Explore the StarWars universe
-            </h1>
+            <div className="vh-100 row fs-1 align-items-center">
+              <h1 className="display-1">Explore the StarWars Universe</h1>
+              <button
+                type="button"
+                className="col-2 btn btn-warning m-auto"
+                onClick={() => {
+                  setShowNav(true);
+                }}
+              >
+                {" "}
+                Enter
+              </button>
+            </div>
           ))}
         {page !== "home" && <Page changepage={changePage} page={page} />}
       </div>

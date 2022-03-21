@@ -48,7 +48,7 @@ const Page = ({changepage, page}) => {
 
   return (
     <>
-      <div>{page}</div>
+      <div id="page-title">{page}</div>
       {dataList.length > 0 ? (
         <PageDataList page={page} datalist={dataList} hidebuttons={setShowButtons} />
       ) : (
@@ -79,6 +79,7 @@ const Page = ({changepage, page}) => {
       )}
       <br></br>
       <button
+        id="back-to-nav"
         type="button"
         className="btn btn-warning m-2"
         onClick={() => {
