@@ -13,6 +13,9 @@ npm run build
 npm start
 open localhost:3001 in your browser
 ```
+## site preview 
+![starwars](https://user-images.githubusercontent.com/89159410/159531938-3d83a420-bdfd-47d2-a78d-621c53ceee98.gif)
 
 ### Author
 Cory Zauss
+
