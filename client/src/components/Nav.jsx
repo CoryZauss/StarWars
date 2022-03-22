@@ -3,6 +3,7 @@ import React from "react";
 const Nav = ({changepage}) => {
   return (
     <>
+      (click on a category)
       <div
         onClick={() => {
           changepage("people");
